@@ -132,7 +132,7 @@ local function loadPackages(forceLoad)
     packagesList = sanfs:loadLuaData(packagesfile)
   end
   
-  io.write(textutils.serialize(packagesList)..'\n')
+  -- io.write(textutils.serialize(packagesList)..'\n')
 
   for packageName,info in pairs(packagesList) do
     if table.hasKey(info,'info') then
@@ -140,9 +140,11 @@ local function loadPackages(forceLoad)
       loadFileFromInternet(info['info'],'/tmp/'..packageName..'_info.lua')
       local subInfo = sanfs:loadLuaData('/tmp/'..packageName..'_info.lua')
       info = table.merge(info,subInfo)
+      table.removekey(info,'info')
       packagesList[packageName] = info
     end
   end
+  io.write(textutils.serialize(packagesList)..'\n')
   sanfs:saveLuaData(packagesfile,packagesList)
   return packagesList
 end
@@ -211,6 +213,7 @@ local force = options['f'] or false
 local actions = {
   ['update'] = function(...)
     loadFileFromInternet("https://raw.githubusercontent.com/sanovskiy/mc-lua/master/oc/packages.lua",packagesfile)
+    -- loadPackages()
   end,
 
   ['upgrade'] = function(packageName) -- upgrades package or all installed
