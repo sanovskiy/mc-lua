@@ -19,8 +19,8 @@ local filesToLoad = {
   ['/bin/san-get.lua'] = repo_path..'/san-get/san-get.lua'
 }
 
--- local randstr = '?'..tostring(math.floor(math.random()*100000))
-local randstr = ''
+local randstr = '?'..tostring(math.floor(math.random()*100000))
+-- local randstr = ''
 
 for path,url in pairs(filesToLoad) do
   if fs.exists(path) then

@@ -95,6 +95,29 @@ local function isPackageInstalled(packageName)
   return table.hasKey(installedPackages,packageName) 
 end
 
+local function loadFileFromInternet(url,path)
+  local f, reason = io.open(path, "w")
+  if not f then
+    io.stderr:write("Failed opening file for writing: " .. reason..'\n')
+    return
+  end
+  io.write('  Downloading '..path..' ')
+  local result, response = pcall(internet.request, url)
+  if result then
+    for chunk in response do
+      if not options.k then
+        string.gsub(chunk, "\r\n", "\n")
+      end
+      f:write(chunk)
+    end
+    f:close()
+    io.write('done\n')
+  else
+    io.write('failed\n')
+    io.stderr:write("HTTP request failed: " .. response .. "\n")
+    os.exit()
+  end
+end
 
 local function loadPackages(forceLoad)
   forceLoad = forceLoad or false
@@ -150,30 +173,6 @@ local function getPackageDependencies(packageName)
     end
   end
   return dep
-end
-
-local function loadFileFromInternet(url,path)
-  local f, reason = io.open(path, "w")
-  if not f then
-    io.stderr:write("Failed opening file for writing: " .. reason..'\n')
-    return
-  end
-  io.write('  Downloading '..path..' ')
-  local result, response = pcall(internet.request, url)
-  if result then
-    for chunk in response do
-      if not options.k then
-        string.gsub(chunk, "\r\n", "\n")
-      end
-      f:write(chunk)
-    end
-    f:close()
-    io.write('done\n')
-  else
-    io.write('failed\n')
-    io.stderr:write("HTTP request failed: " .. response .. "\n")
-    os.exit()
-  end
 end
 
 local function doInstallFiles(pList)
