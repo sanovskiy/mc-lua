@@ -96,7 +96,8 @@ local function isPackageInstalled(packageName)
 end
 
 local function loadFileFromInternet(url,path)
-  local f, reason = io.open(path, "w")
+  local partial = path..'.part'
+  local f, reason = io.open(partial, "w")
   if not f then
     io.stderr:write("Failed opening file for writing: " .. reason..'\n')
     return
@@ -111,8 +112,14 @@ local function loadFileFromInternet(url,path)
       f:write(chunk)
     end
     f:close()
+    if filesystem.exists(path) then
+      filesystem.remove(path)
+    end
+    filesystem.rename(partial,path)
     io.write('done\n')
   else
+    filesystem.remove(partial)
+    f:close()
     io.write('failed\n')
     io.stderr:write("HTTP request failed: " .. response .. "\n")
     os.exit()
