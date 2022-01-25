@@ -10,11 +10,13 @@ if not component.isAvailable("internet") then
   return
 end
 
+local repo_path = "https://raw.githubusercontent.com/sanovskiy/mc-lua/master/oc"
+
 local filesToLoad = {
-  ['/lib/sanstring.lua'] = 'https://bitbucket.org/sanovskiy/minecraft-lua/raw/master/oc/sanlib/sanstring.lua',
-  ['/lib/santable.lua'] = 'https://bitbucket.org/sanovskiy/minecraft-lua/raw/master/oc/sanlib/santable.lua',
-  ['/lib/sanfs.lua'] = 'https://bitbucket.org/sanovskiy/minecraft-lua/raw/master/oc/sanlib/sanfs.lua',
-  ['/bin/san-get.lua'] = 'https://bitbucket.org/sanovskiy/minecraft-lua/raw/master/oc/san-get/san-get.lua'
+  ['/lib/sanstring.lua'] = repo_path..'/sanlib/sanstring.lua',
+  ['/lib/santable.lua'] = repo_path..'/sanlib/santable.lua',
+  ['/lib/sanfs.lua'] = repo_path..'/sanlib/sanfs.lua',
+  ['/bin/san-get.lua'] = repo_path..'/san-get.lua'
 }
 
 local randstr = '?'..tostring(math.floor(math.random()*100000))
