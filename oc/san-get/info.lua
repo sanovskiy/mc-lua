@@ -1,6 +1,6 @@
 {
     name='san-get',
-    version = '1.0.10',
+    version = '1.0.11',
     dependencies = {'sanlib'},
     files = {
       ['/bin/san-get.lua'] = 'https://raw.githubusercontent.com/sanovskiy/mc-lua/master/oc/san-get/san-get.lua',

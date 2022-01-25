@@ -312,7 +312,6 @@ local actions = {
       if isPackageInstalled(packageName) then
         inst = '+'
       end
-      io.write('\n\n'..serialization.serialize(pInfo)..'\n\n')
       io.write(inst..' '.. packageName .. ' - ('..pInfo['version']..') '..pInfo['description']..'\n')
     end
     
