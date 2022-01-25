@@ -18,23 +18,25 @@ end
 
 function sanfs:saveLuaData(path,data)
   local file, reason, success, raw
-  if fs.exists(path) then
-    fs.remove(path)
-  end
+  local tmppath = path..'.write'
   
-  file, reason = io.open(path, 'w')
+  file, reason = io.open(tmppath, 'w')
   if not file then
-    io.stderr:write('Failed opening file '.. path ..' for writing: ' .. reason)
+    io.stderr:write('Failed opening file '.. tmppath ..' for writing: ' .. reason)
     os.exit()
   end
 
   raw = serialization.serialize(data,doPrettySerialization)
   success, reason = file:write(raw)
   file:close()
-  if not file then
+  if not success then
     io.stderr:write('Failed writing data to '.. path ..': ' .. reason)
     os.exit()
   end
+  if fs.exists(path) then
+    fs.remove(path)
+  end
+  fs.rename(tmppath,path)
   return success
 end
 
