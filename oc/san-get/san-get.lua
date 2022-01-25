@@ -126,6 +126,7 @@ local function loadPackages(forceLoad)
   end
   for packageName,info in pairs(packagesList) do
     if table.hasKey(info,'info') then
+      io.write('Downloading info for '..packageName..' from '..info['info']..'\n')
       loadFileFromInternet(info['info'],'/tmp/'..packageName..'_info.lua')
       local subInfo = sanfs:loadLuaData('/tmp/'..packageName..'_info.lua')
       info = table.merge(info,subInfo)
