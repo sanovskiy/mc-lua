@@ -16,6 +16,11 @@
     dependencies = {'sanlib'},
     description = 'GUI framework',
   },
+  ['ic2-components'] = {
+    info = 'https://raw.githubusercontent.com/sanovskiy/mc-lua/master/oc/ic2-components/info.lua',
+    dependencies = {'sanlib'},
+    description = 'Industrial Craft 2 components library',
+  },
   ['mc'] = {
     dependencies = {},
     files = {
