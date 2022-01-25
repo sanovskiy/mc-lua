@@ -9,7 +9,6 @@ local internet = require("internet")
 local filesystem = require("filesystem")
 local serialization = require("serialization")
 local shell = require("shell")
-local textutils = require("textutils")
 local args, options = shell.parse(...)
 local sanfs = require('sanfs')
 require('santable')
@@ -133,7 +132,6 @@ local function loadPackages(forceLoad)
     packagesList = sanfs:loadLuaData(packagesfile)
   end
   
-  -- io.write(textutils.serialize(packagesList)..'\n')
 
   for packageName,info in pairs(packagesList) do
     if table.hasKey(info,'info') then
@@ -145,7 +143,7 @@ local function loadPackages(forceLoad)
       packagesList[packageName] = info
     end
   end
-  io.write(textutils.serialize(packagesList)..'\n')
+  io.write(serialization.serialize(packagesList)..'\n')
   sanfs:saveLuaData(packagesfile,packagesList)
   return packagesList
 end
