@@ -36,6 +36,11 @@ function sanfs:saveLuaData(path,data)
     os.exit()
   end
   file, reason = io.open(tmppath, 'r')
+  if not file then
+    io.stderr:write('Failed opening file '.. tmppath ..' for reading: ' .. reason)
+    os.exit()
+  end
+  
   local raw1 = file:read('*a')
   io.write('\nWRITTEN\n\n'..raw1..'\n\n')
   file:close()
