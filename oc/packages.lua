@@ -12,6 +12,7 @@
     description = 'Package manager',
   },
   ['sanguilib'] = {
+    info = 'https://raw.githubusercontent.com/sanovskiy/mc-lua/master/oc/sanguilib/info.lua'
     dependencies = {'sanlib'},
     description = 'GUI framework',
   },
