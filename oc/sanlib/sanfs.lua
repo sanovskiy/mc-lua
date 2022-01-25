@@ -27,6 +27,7 @@ function sanfs:saveLuaData(path,data)
   end
 
   raw = serialization.serialize(data,doPrettySerialization)
+  io.write('\nWRITING\n\n'..raw..'\n\n')
   success, reason = file:write(raw)
   file:close()
   if not success then

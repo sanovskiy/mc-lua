@@ -29,7 +29,6 @@ for path,url in pairs(filesToLoad) do
   shell.execute('wget \''..url..randstr..'\' '..path)
 end
 shell.execute('san-get update')
-shell.execute('san-get install sanlib')
 shell.execute('san-get install san-get')
 
 io.write('Installed')
