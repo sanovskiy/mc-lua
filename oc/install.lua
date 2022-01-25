@@ -32,7 +32,7 @@ shell.execute('san-get update')
 shell.execute('san-get install san-get')
 
 io.write('Installed')
-os.sleep(3)
+-- os.sleep(3)
 computer.shutdown(true)
 
 --[[ uninstall it

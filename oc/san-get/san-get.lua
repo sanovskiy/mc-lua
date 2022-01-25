@@ -15,6 +15,7 @@ require('santable')
 require('sanstring')
 
 local randstr = tostring(math.floor(math.random()*100000))
+local infoFolder = '/etc/san-get/info/'
 local packagesfile = '/etc/san-get/packages.list'
 local installedPackagesFile = '/etc/san-get/installed.list'
 local packagesList
@@ -134,15 +135,17 @@ local function loadPackages(forceLoad)
   
   for packageName,info in pairs(packagesList) do
     if table.hasKey(info,'info') then
-      loadFileFromInternet(info['info'],'/tmp/'..packageName..'_info.lua')
-      local subInfo = sanfs:loadLuaData('/tmp/'..packageName..'_info.lua')
+      local infofile = infoFolder..packageName..'.lua'
+      if not fs.exists(infofile) then
+        loadFileFromInternet(info['info'], infofile)
+      end
+      local subInfo = sanfs:loadLuaData(infofile)
       info = table.merge(info,subInfo)
       table.removeKey(info,'info')
       table.removeKey(packagesList,packageName)
       packagesList[packageName] = info
     end
   end
-  sanfs:saveLuaData(packagesfile,packagesList)
   return packagesList
 end
 
@@ -210,6 +213,7 @@ local force = options['f'] or false
 local actions = {
   ['update'] = function(...)
     loadFileFromInternet("https://raw.githubusercontent.com/sanovskiy/mc-lua/master/oc/packages.lua",packagesfile)
+    shell.execute('rm -f '..infoFolder..'*')
     -- loadPackages()
   end,
 
@@ -308,7 +312,7 @@ local actions = {
         inst = '+'
       end
       io.write('\n\n'..serialization.serialize(pInfo)..'\n\n')
-      io.write(inst..' '..packageName .. ' - ('..pInfo['version']..') '..pInfo['description']..'\n')
+      io.write(inst..' '.. packageName .. ' - ('..pInfo['version']..') '..pInfo['description']..'\n')
     end
     
   end,
