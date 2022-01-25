@@ -2,7 +2,7 @@ local fs = require("filesystem")
 local serialization = require('serialization')
 local sanfs = {}
 
-local doPrettySerialization = true
+local doPrettySerialization = false
 
 function sanfs:loadLuaData(path)
   local file, reason = io.open(path, 'r')
