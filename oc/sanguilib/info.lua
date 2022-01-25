@@ -7,5 +7,5 @@
   },
   afterinstall = {},
   version = '0.0.1',
-  addrandom = false
+  addrandom = true
 }
