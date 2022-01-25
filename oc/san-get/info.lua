@@ -8,5 +8,5 @@
     },
     afterinstall = {},
     description = 'Package manager for my repo',
-    addrandom = true
+    addrandom = false
 }
