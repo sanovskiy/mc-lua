@@ -32,7 +32,7 @@ function sanfs:saveLuaData(path,data)
   file:close()
   file, reason = io.open(path, 'r')
   local raw1 = file:read('*a')
-  io.write('\WRITTEN\n\n'..raw1..'\n\n')
+  io.write('\nWRITTEN\n\n'..raw1..'\n\n')
   file:close()
   
   if not success then
