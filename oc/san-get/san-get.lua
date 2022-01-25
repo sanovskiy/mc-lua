@@ -131,6 +131,9 @@ local function loadPackages(forceLoad)
   if packagesList==nil or forceLoad then
     packagesList = sanfs:loadLuaData(packagesfile)
   end
+  
+  io.write(textutils.serialize(packagesList)..'\n')
+
   for packageName,info in pairs(packagesList) do
     if table.hasKey(info,'info') then
       -- io.write('Downloading info for '..packageName..' from '..info['info']..'\n')
@@ -304,7 +307,6 @@ local actions = {
       if isPackageInstalled(packageName) then
         inst = '+'
       end
-      io.write(textutils.serialize(pInfo)..'\n')
       io.write(inst..' '..packageName .. ' - ('..pInfo['version']..') '..pInfo['description']..'\n')
     end
     
