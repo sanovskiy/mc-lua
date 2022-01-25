@@ -23,7 +23,7 @@ table.merge = function(t1,t2)
   return result
 end
 
-function table.removeKey(table, key)
+table.removeKey = function(table, key)
     local element = table[key]
     table[key] = nil
     return element

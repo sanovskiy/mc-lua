@@ -140,7 +140,7 @@ local function loadPackages(forceLoad)
       loadFileFromInternet(info['info'],'/tmp/'..packageName..'_info.lua')
       local subInfo = sanfs:loadLuaData('/tmp/'..packageName..'_info.lua')
       info = table.merge(info,subInfo)
-      table.removekey(info,'info')
+      table.removeKey(info,'info')
       packagesList[packageName] = info
     end
   end
