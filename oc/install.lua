@@ -16,7 +16,7 @@ local filesToLoad = {
   ['/lib/sanstring.lua'] = repo_path..'/sanlib/sanstring.lua',
   ['/lib/santable.lua'] = repo_path..'/sanlib/santable.lua',
   ['/lib/sanfs.lua'] = repo_path..'/sanlib/sanfs.lua',
-  ['/bin/san-get.lua'] = repo_path..'/san-get.lua'
+  ['/bin/san-get.lua'] = repo_path..'/san-get/san-get.lua'
 }
 
 -- local randstr = '?'..tostring(math.floor(math.random()*100000))

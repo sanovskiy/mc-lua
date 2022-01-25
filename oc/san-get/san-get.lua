@@ -101,20 +101,23 @@ local function loadPackages(forceLoad)
   if packagesList==nil or forceLoad then
     packagesList = sanfs:loadLuaData(packagesfile)
   end
+  for packageName,info in pairs(packagesList) do
+    if table.hasKey(info,'info') then
+      local subInfo = loadFileFromInternet(info['info'],'/tmp/'..packagename..'_info.lua')
+      info = table.merge(info,subInfo)
+      packagesList[packageName] = info
+    end
+  end
+  sanfs:saveLuaData(packagesfile,packagesList)
+  return packagesList
 end
 
 local function getPackageInfo(packageName)
   loadPackages()
-  local info = {}
-  if not table.hasKey(packagesList,packageName) then
-    return nil
+  if table.hasKey(packagesList,packageName) then
+    return packagesList[packageName]
   end
-  info = packagesList[packageName]
-  if table.hasKey(info,'info') then
-    local subInfo = loadFileFromInternet(info['info'],'/tmp/'..packagename..'_info.lua')
-    info = table.merge(info,subInfo)
-  end
-  return info
+  return nil
 end
 
 local function getInstalledPackageVersion(packageName)
@@ -196,7 +199,7 @@ local packageName = args[2]
 local force = options['f'] or false
 local actions = {
   ['update'] = function(...)
-    loadFileFromInternet("https://raw.githubusercontent.com/sanovskiy/mc-lua/master/oc/packages.lua?"..randstr,packagesfile)
+    loadFileFromInternet("https://raw.githubusercontent.com/sanovskiy/mc-lua/master/oc/packages.lua",packagesfile)
   end,
 
   ['upgrade'] = function(packageName) -- upgrades package or all installed
