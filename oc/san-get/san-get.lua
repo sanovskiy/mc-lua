@@ -142,11 +142,7 @@ local function loadPackages(forceLoad)
       packagesList[packageName] = info
     end
   end
---  io.write('\n\n WRITING\n')
---  io.write(serialization.serialize(packagesList)..'\n')
   sanfs:saveLuaData(packagesfile,packagesList)
---  io.write('\nSAVED\n'.. serialization.serialize(sanfs:loadLuaData(packagesfile)) ..'\n')
---  io.write('DONE\n\n')
   return packagesList
 end
 
