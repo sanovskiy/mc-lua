@@ -2,7 +2,7 @@ local fs = require("filesystem")
 local serialization = require('serialization')
 local sanfs = {}
 
-local doPrettySerialization = false
+local doPrettySerialization = true
 
 function sanfs:loadLuaData(path)
   local file, reason = io.open(path, 'r')
@@ -27,7 +27,6 @@ function sanfs:saveLuaData(path,data)
   end
 
   raw = serialization.serialize(data,doPrettySerialization)
-  io.write('\nWRITING\n\n'..raw..'\n\n')
   success, reason = file:write(raw)
   file:close()
   if not success then
@@ -35,15 +34,13 @@ function sanfs:saveLuaData(path,data)
     os.exit()
   end
   
-  file, reason = io.open(tmppath, 'r')
-  if not file then
-    io.stderr:write('Failed opening file '.. tmppath ..' for reading: ' .. reason)
-    os.exit()
-  end
-  
-  local raw1 = file:read('*a')
-  io.write('\nWRITTEN\n\n'..raw1..'\n\n')
-  file:close()
+--  file, reason = io.open(tmppath, 'r')
+--  if not file then
+--    io.stderr:write('Failed opening file '.. tmppath ..' for reading: ' .. reason)
+--    os.exit()
+--  end
+--  local raw1 = file:read('*a')
+--  file:close()
   
   if fs.exists(path) then
     fs.remove(path)
