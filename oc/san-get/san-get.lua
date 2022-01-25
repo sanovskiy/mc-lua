@@ -23,7 +23,8 @@ local installedPackages
 
 local function checkFolders()
   local folders = {
-    '/etc/san-get/'
+    '/etc/san-get/',
+    infoFolder
   }
   for _,path in pairs(folders) do
     if not(filesystem.exists(path)) or not(filesystem.isDirectory(path)) then
