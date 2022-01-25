@@ -1,6 +1,7 @@
 --[[
 
 ]]
+local serialization = require('serialization')
 
 table.hasKey = function(set, key)
     return set[key] ~= nil
@@ -16,10 +17,12 @@ table.hasValue = function(set,value)
 end
 
 table.merge = function(t1,t2)
+  io.write('\nMerging\n'..serialization.serialize(t1)..'\nAND\n'..serialization.serialize(t2)..'\n\n')
   result = t1
   for key,val in pairs(t2) do
     t1[key] = t2[key]
   end
+  io.write('\nRESULT\n'..serialization.serialize(result)..'\n\n')
   return result
 end
 
