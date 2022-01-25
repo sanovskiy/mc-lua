@@ -1,8 +1,8 @@
 --[[
   Package manager for my soft 
 ]]
-local AUTHOR = 'Pavel Terentyev <sanovskiy@gmail.com>'
-local VERSION = '1.0.8'
+local AUTHOR = 'Pavel Terentyev <pavel.terentyev@gmail.com>'
+local VERSION = '1.0.9'
 
 local fs = require("filesystem")
 local internet = require("internet")
@@ -105,10 +105,16 @@ end
 
 local function getPackageInfo(packageName)
   loadPackages()
-  if table.hasKey(packagesList,packageName) then
-    return packagesList[packageName]
+  local info = {}
+  if not table.hasKey(packagesList,packageName) then
+    return nil
   end
-  return nil
+  info = packagesList[packageName]
+  if table.hasKey(info,'info') then
+    local subInfo = loadFileFromInternet(info['info'],'/tmp/'..packagename..'_info.lua')
+    info = table.merge(info,subInfo)
+  end
+  return info
 end
 
 local function getInstalledPackageVersion(packageName)
@@ -190,7 +196,7 @@ local packageName = args[2]
 local force = options['f'] or false
 local actions = {
   ['update'] = function(...)
-    loadFileFromInternet("https://bitbucket.org/sanovskiy/minecraft-lua/raw/master/oc/packages.lua?"..randstr,packagesfile)
+    loadFileFromInternet("https://raw.githubusercontent.com/sanovskiy/mc-lua/master/oc/packages.lua?"..randstr,packagesfile)
   end,
 
   ['upgrade'] = function(packageName) -- upgrades package or all installed

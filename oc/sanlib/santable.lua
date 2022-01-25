@@ -14,3 +14,11 @@ table.hasValue = function(set,value)
   end
   return false
 end
+
+table.merge = function(t1,t2)
+  result = t1
+  for key,val in pairs(t2) do
+    t1[key] = t2[key]
+  end
+  return result
+end
