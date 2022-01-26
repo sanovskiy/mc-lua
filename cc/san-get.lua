@@ -10,14 +10,6 @@ if not(fs.exists("/lib")) then
 end
 
 local InitAnnounced = false
-if not(fs.exists("san-gh")) then
-  if not(InitAnnounced) then
-    print("Initial install...")
-    InitAnnounced = true
-  end
-  print("  Installing san-gh")
-  shell.run("pastebin","get uZpSxgqR san-gh")
-end
 
 if not(fs.exists("/lib/json")) then
   if not(InitAnnounced) then
@@ -68,7 +60,7 @@ function updateRepo()
   if fs.exists("/etc/repo.json") then
     fs.delete("/etc/repo.json")
   end
-	shell.run("san-gh","get repo.json /etc/repo.json")
+	shell.run("wget","https://raw.githubusercontent.com/sanovskiy/mc-lua/master/cc/repo.json /etc/repo.json")
 end
 
 function readRepoFile()
@@ -107,7 +99,7 @@ function dloadSoftFiles(softName)
       fs.delete(file.localname..".tmp")
     end
     print("DL: "..file.url.." -> "..file.localname..".tmp")
-    if not(shell.run("san-gh","get "..file.url.." "..file.localname..".tmp")) then
+    if not(shell.run("wget",file.url.." "..file.localname..".tmp")) then
       error("Failed to load "..file.url)
       return
     end

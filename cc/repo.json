@@ -3,27 +3,17 @@
     "desc":"Package system",
     "files": [
       {
-        "url":"san-get.lua",
+        "url":"https://raw.githubusercontent.com/sanovskiy/mc-lua/master/cc/san-get.lua",
         "localname":"/san-get",
       }
     ],
-    "requires":["san-gh"]
-  },    
-  "san-gh": {
-    "desc":"Github downloader",
-    "files": [
-      {
-        "url":"san-gh.lua",
-        "localname":"san-gh",
-      }
-    ],
     "requires":[]
-  },
+  },    
   "debug-api": {
     "desc":"Debug api",
     "files": [
       {
-        "url":"src/api/debug.lua",
+        "url":"https://raw.githubusercontent.com/sanovskiy/mc-lua/master/cc/src/api/debug.lua",
         "localname":"/lib/debug",
       }
     ],
@@ -33,7 +23,7 @@
     "desc":"API for events",
     "files": [
       {
-        "url":"src/api/events.lua",
+        "url":"https://raw.githubusercontent.com/sanovskiy/mc-lua/master/cc/src/api/events.lua",
         "localname":"/lib/events",
       }
     ],
@@ -43,7 +33,7 @@
     "desc":"IC2 energy storage api",
     "files": [
       {
-        "url":"src/api/ic2/batbox.lua",
+        "url":"https://raw.githubusercontent.com/sanovskiy/mc-lua/master/cc/src/api/ic2/batbox.lua",
         "localname":"/lib/ic2batbox",
       }
     ],
@@ -53,7 +43,7 @@
     "desc":"IC2 reactors api",
     "files": [
       {
-        "url":"src/api/ic2/reactors.lua",
+        "url":"https://raw.githubusercontent.com/sanovskiy/mc-lua/master/cc/src/api/ic2/reactors.lua",
         "localname":"/lib/ic2reactors",
       }
     ],
@@ -63,21 +53,21 @@
     "desc":"IC2 reactor controller",
     "files": [
       {
-        "url":"src/ic2/reactor-monitor.lua",
+        "url":"https://raw.githubusercontent.com/sanovskiy/mc-lua/master/cc/src/ic2/reactor-monitor.lua",
         "localname":"/reactormon",
       },
       {
-        "url":"src/ic2/reactor-controller.lua",
+        "url":"https://raw.githubusercontent.com/sanovskiy/mc-lua/master/cc/src/ic2/reactor-controller.lua",
         "localname":"/reactorctl",
       }
     ],
     "requires":["ic2batbox-api","ic2reactors-api"]
   },
-  "cls": {"desc":"No desc","files":[{"url":"src/cls.lua","localname":"/cls"}],"requires":[]},
-  "fills": {"desc":"No desc","files":[{"url":"src/fills.lua","localname":"/fills"}],"requires":[]},
-  "kubachos": {"desc":"No desc","files":[{"url":"src/kubachos.lua","localname":"/kubachos"}],"requires":[]},
-  "mineos1": {"desc":"No desc","files":[{"url":"src/mineos1.lua","localname":"/mineos1"}],"requires":[]},
-  "mineos2": {"desc":"No desc","files":[{"url":"src/mineos2.lua","localname":"/mineos2"}],"requires":[]},
-  "oldmcwarp": {"desc":"No desc","files":[{"url":"src/oldmcwarp.lua","localname":"/oldmcwarp"}],"requires":[]},
-  "pattern-builder": {"desc":"No desc","files":[{"url":"src/pattern-builder.lua","localname":"/pbuild"}],"requires":[]}
+  "cls": {"desc":"No desc","files":[{"url":"https://raw.githubusercontent.com/sanovskiy/mc-lua/master/cc/src/cls.lua","localname":"/cls"}],"requires":[]},
+  "fills": {"desc":"No desc","files":[{"url":"https://raw.githubusercontent.com/sanovskiy/mc-lua/master/cc/src/fills.lua","localname":"/fills"}],"requires":[]},
+  "kubachos": {"desc":"No desc","files":[{"url":"https://raw.githubusercontent.com/sanovskiy/mc-lua/master/cc/src/kubachos.lua","localname":"/kubachos"}],"requires":[]},
+  "mineos1": {"desc":"No desc","files":[{"url":"https://raw.githubusercontent.com/sanovskiy/mc-lua/master/cc/src/mineos1.lua","localname":"/mineos1"}],"requires":[]},
+  "mineos2": {"desc":"No desc","files":[{"url":"https://raw.githubusercontent.com/sanovskiy/mc-lua/master/cc/src/mineos2.lua","localname":"/mineos2"}],"requires":[]},
+  "oldmcwarp": {"desc":"No desc","files":[{"url":"https://raw.githubusercontent.com/sanovskiy/mc-lua/master/cc/src/oldmcwarp.lua","localname":"/oldmcwarp"}],"requires":[]},
+  "pattern-builder": {"desc":"No desc","files":[{"url":"https://raw.githubusercontent.com/sanovskiy/mc-lua/master/cc/src/pattern-builder.lua","localname":"/pbuild"}],"requires":[]}
 }
