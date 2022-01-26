@@ -1,0 +1,76 @@
+{
+  "san-get": {
+    "desc":"Package system",
+    "files": [
+      {
+        "url":"src/san-get.lua",
+        "localname":"/san-get",
+      }
+    ],
+    "requires":["san-gh"]
+  },    
+  "san-gh": {
+    "desc":"Github downloader",
+    "files": [
+      {
+        "url":"src/san-gh.lua",
+        "localname":"san-gh",
+      }
+    ],
+    "requires":[]
+  },
+  "debug-api": {
+    "desc":"Debug api",
+    "files": [
+      {
+        "url":"src/api/debug.lua",
+        "localname":"/lib/debug",
+      }
+    ],
+    "requires":[]
+  },
+  "events-api": {
+    "desc":"API for events",
+    "files": [
+      {
+        "url":"src/api/events.lua",
+        "localname":"/lib/events",
+      }
+    ],
+    "requires":[]
+  },
+  "ic2batbox-api": {
+    "desc":"IC2 energy storage api",
+    "files": [
+      {
+        "url":"src/api/ic2/batbox.lua",
+        "localname":"/lib/ic2batbox",
+      }
+    ],
+    "requires":["debug-api"]
+  },
+  "ic2reactors-api": {
+    "desc":"IC2 reactors api",
+    "files": [
+      {
+        "url":"src/api/ic2/reactors.lua",
+        "localname":"/lib/ic2reactors",
+      }
+    ],
+    "requires":["debug-api"]
+  },
+  "reactorctl": {
+    "desc":"IC2 reactor controller",
+    "files": [
+      {
+        "url":"src/ic2/reactor-monitor.lua",
+        "localname":"/reactormon",
+      },
+      {
+        "url":"src/ic2/reactor-controller.lua",
+        "localname":"/reactorctl",
+      }
+    ],
+    "requires":["ic2batbox-api","ic2reactors-api"]
+  }
+}
