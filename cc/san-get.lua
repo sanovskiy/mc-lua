@@ -106,16 +106,16 @@ function dloadSoftFiles(softName)
     if fs.exists(file.localname..".tmp") then
       fs.delete(file.localname..".tmp")
     end
-    -- print("DL: "..file.url.." -> "..file.localname..".tmp")
+    print("DL: "..file.url.." -> "..file.localname..".tmp")
     if not(shell.run("san-gh","get "..file.url.." "..file.localname..".tmp")) then
       error("Failed to load "..file.url)
       return
     end
     if fs.exists(file.localname) then
-      -- print("RM: "..file.localname)
+      print("RM: "..file.localname)
       fs.delete(file.localname)
     end
-    -- print("CP: "..file.localname..".tmp -> "..file.localname)
+    print("CP: "..file.localname..".tmp -> "..file.localname)
     fs.copy(file.localname..".tmp", file.localname)
     if fs.exists(file.localname..".tmp") then
       fs.delete(file.localname..".tmp")
