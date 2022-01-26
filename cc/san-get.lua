@@ -63,8 +63,8 @@ function download(sUrl, file)
       printError(err or "Invalid URL.")
       return false
   end
-
-  local response = http.get(sUrl , "Cache-Control: no-cache" , true)
+  
+  local response = http.get(sUrl , { ["Cache-Control"] = "no-cache" } , true)
   if not response then
       printError("Download failed.")
       return false
