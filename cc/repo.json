@@ -73,11 +73,11 @@
     ],
     "requires":["ic2batbox-api","ic2reactors-api"]
   },
-  "cls": {"desc":"","files":[{"url":"","localname":""}],"requires":[]},
-  "fills": {"desc":"","files":[{"url":"","localname":""}],"requires":[]},
-  "kubachos": {"desc":"","files":[{"url":"","localname":""}],"requires":[]},
-  "mineos1": {"desc":"","files":[{"url":"","localname":""}],"requires":[]},
-  "mineos2": {"desc":"","files":[{"url":"","localname":""}],"requires":[]},
-  "oldmcwarp": {"desc":"","files":[{"url":"","localname":""}],"requires":[]},
-  "pattern-builder": {"desc":"","files":[{"url":"src/pattern-builder.lua","localname":"/pbuild"}],"requires":[]}
+  "cls": {"desc":"No desc","files":[{"url":"","localname":""}],"requires":[]},
+  "fills": {"desc":"No desc","files":[{"url":"","localname":""}],"requires":[]},
+  "kubachos": {"desc":"No desc","files":[{"url":"","localname":""}],"requires":[]},
+  "mineos1": {"desc":"No desc","files":[{"url":"","localname":""}],"requires":[]},
+  "mineos2": {"desc":"No desc","files":[{"url":"","localname":""}],"requires":[]},
+  "oldmcwarp": {"desc":"No desc","files":[{"url":"","localname":""}],"requires":[]},
+  "pattern-builder": {"desc":"No desc","files":[{"url":"src/pattern-builder.lua","localname":"/pbuild"}],"requires":[]}
 }
