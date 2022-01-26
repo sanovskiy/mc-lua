@@ -64,7 +64,7 @@ function download(sUrl, file)
       return false
   end
 
-  local response = http.get(sUrl , nil , true)
+  local response = http.get(sUrl , "Cache-Control: no-cache" , true)
   if not response then
       printError("Download failed.")
       return false
