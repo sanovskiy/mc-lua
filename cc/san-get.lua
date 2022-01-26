@@ -60,7 +60,8 @@ function updateRepo()
   if fs.exists("/etc/repo.json") then
     fs.delete("/etc/repo.json")
   end
-	shell.run("wget","https://raw.githubusercontent.com/sanovskiy/mc-lua/master/cc/repo.json /etc/repo.json")
+  local randstr = tostring(math.floor(math.random()*100000))
+	shell.run("wget","https://raw.githubusercontent.com/sanovskiy/mc-lua/master/cc/repo.json /etc/repo.json?"..randstr)
 end
 
 function readRepoFile()
@@ -99,7 +100,8 @@ function dloadSoftFiles(softName)
       fs.delete(file.localname..".tmp")
     end
     print("DL: "..file.url.." -> "..file.localname..".tmp")
-    if not(shell.run("wget",file.url.." "..file.localname..".tmp")) then
+    local randstr = tostring(math.floor(math.random()*100000))
+    if not(shell.run("wget",file.url.."?"..randstr.." "..file.localname..".tmp")) then
       error("Failed to load "..file.url)
       return
     end
