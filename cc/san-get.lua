@@ -58,6 +58,7 @@ end
 function download(url, file)
   -- Check if the URL is valid
   local ok, err = http.checkURL(url)
+  -- print("Downloading "..url.." into "..file)
   if not ok then
       printError(err or "Invalid URL.")
       return false
@@ -84,7 +85,7 @@ function updateRepo()
         fs.delete("/etc/repo.json")
     end
     local randstr = tostring(math.floor(math.random() * 100000))
-    download("https://raw.githubusercontent.com/sanovskiy/mc-lua/master/cc/repo.json /etc/repo.json?" .. randstr,"/etc/repo.json")
+    download("https://raw.githubusercontent.com/sanovskiy/mc-lua/master/cc/repo.json?" .. randstr,"/etc/repo.json")
 end
 
 function readRepoFile()
