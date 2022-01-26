@@ -126,7 +126,7 @@ end
 function installSoftware(softName)
   local repo = readRepoFile()
   if repo[softName] == nil then
-    error(softName .. " not found")
+    error(softName .. " not found in repo")
     return
   end
   print("Installing " .. softName)
