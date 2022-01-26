@@ -55,10 +55,10 @@ function table.join(table, glue)
     return result
 end
 
-function download(url, file)
+function download(sUrl, file)
   -- Check if the URL is valid
-  local ok, err = http.checkURL(url)
-  -- print("Downloading "..url.." into "..file)
+  local ok, err = http.checkURL(sUrl)
+  -- print("Downloading "..sUrl.." into "..file)
   if not ok then
       printError(err or "Invalid URL.")
       return false
@@ -123,7 +123,7 @@ function dloadSoftFiles(softName)
         if fs.exists(file.localname .. ".tmp") then
             fs.delete(file.localname .. ".tmp")
         end
-        print("DL: " .. file.url .. " -> " .. file.localname .. ".tmp")
+        -- print("DL: " .. file.url .. " -> " .. file.localname .. ".tmp")
         local randstr = tostring(math.floor(math.random() * 100000))
         local sUrl = file.url .. "?" .. randstr
         
@@ -132,10 +132,10 @@ function dloadSoftFiles(softName)
             return
         end
         if fs.exists(file.localname) then
-            print("RM: " .. file.localname)
+            -- print("RM: " .. file.localname)
             fs.delete(file.localname)
         end
-        print("CP: " .. file.localname .. ".tmp -> " .. file.localname)
+        -- print("CP: " .. file.localname .. ".tmp -> " .. file.localname)
         fs.copy(file.localname .. ".tmp", file.localname)
         if fs.exists(file.localname .. ".tmp") then
             fs.delete(file.localname .. ".tmp")
