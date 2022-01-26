@@ -3,7 +3,7 @@
     "desc":"Package system",
     "files": [
       {
-        "url":"https://raw.githubusercontent.com/sanovskiy/mc-lua/master/cc/src/san-get.lua",
+        "url":"https://raw.githubusercontent.com/sanovskiy/mc-lua/master/cc/san-get.lua",
         "localname":"/san-get",
       }
     ],
@@ -13,7 +13,7 @@
     "desc":"Github downloader",
     "files": [
       {
-        "url":"https://raw.githubusercontent.com/sanovskiy/mc-lua/master/cc/src/san-gh.lua",
+        "url":"https://raw.githubusercontent.com/sanovskiy/mc-lua/master/cc/san-gh.lua",
         "localname":"san-gh",
       }
     ],
